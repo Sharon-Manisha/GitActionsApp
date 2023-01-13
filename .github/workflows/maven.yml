@@ -31,4 +31,4 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Build the Docker image
-      run: ./mvnw clean package jib:dockerBuid -DskipTests
+      run: docker build . --file Dockerfile --tag my-docker-img:test_image
