@@ -32,3 +32,6 @@ jobs:
       
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-docker-img:test_image
+      
+    - name: List Docker Images
+      run: docker images
