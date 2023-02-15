@@ -8,6 +8,7 @@ public class GitActionsApp {
 	public static void main(String[] args)  
 	{  
 		System.out.println( "Hello App - Sharon!" );
+		System.out.println( "Application Started!!" );
 	SpringApplication.run(GitActionsApp.class, args);    
 	}   
 }
