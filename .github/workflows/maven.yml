@@ -42,6 +42,8 @@ jobs:
       run: docker images
       
     - name: Tag name dev if default branch
-      if: github.ref == 'refs/heads/main'
-      run: |
-          echo "IMAGE_NAME=$IMAGE_NAME" >> "$GITHUB_OUTPUT
+      if: github.ref_name == 'main'
+      run: echo "::set-env name=IMAGE_NAME::dev"
+      
+    - name: Print new value of env variable
+      run: echo "IMAGE_NAME = $IMAGE_NAME"
