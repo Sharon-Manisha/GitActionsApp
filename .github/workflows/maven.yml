@@ -9,9 +9,7 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches:
-      - sharon_trunk_cicd
+  workflow_dispatch
   
 env:
   IMAGE_NAME: ${{github.ref_name}}
@@ -36,16 +34,22 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-docker-img:test_image
-      
+          
     - name: List Docker Images
       run: docker images
       
     - name: Tag name dev if default branch
       if: github.ref_name == 'main'
-      run: echo "::set-env name=IMAGE_NAME::dev"
+      run: echo "IMAGE_NAME = $IMAGE_NAME"
+      env:
+        IMAGE_NAME: 'dev'
       
     - name: Print new value of env variable
       run: echo "IMAGE_NAME = $IMAGE_NAME"
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-docker-img:$IMAGE_NAME
+      
+    - name: List Docker Images
+      run: docker images
+  
