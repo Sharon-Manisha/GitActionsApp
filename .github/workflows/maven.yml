@@ -54,7 +54,7 @@ jobs:
       run: docker images
         
     - name : Print Title of PR
-      run: echo The Title of your PR is ${{ github.event.pull_request.title }}
+      run: echo The Title of your PR is ${{ github.event.push.head_commit.message }}
       
     - name : Print body of PR
       run: echo The body of your PR is ${{ github.event.pull_request.body }}
