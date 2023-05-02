@@ -54,7 +54,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: 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
       with:
         tag_name: ${{ env.RELEASE_VERSION }}
         release_name: Release ${{ env.RELEASE_VERSION }}
