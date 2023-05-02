@@ -1,15 +1,8 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
+name: Sample Workflow
 
 on:
-  workflow_dispatch
+  push:
+    branches:sharon_trunk_codefix
   
 env:
   IMAGE_NAME: ${{github.ref_name}}
@@ -43,12 +36,17 @@ jobs:
       run: echo "IMAGE_NAME = $IMAGE_NAME"
       env:
         IMAGE_NAME: 'dev'
+        
+    - name: Set Release version env variable
+      run: |
+         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+         echo "RELEASE_VERSION = $RELEASE_VERSION"    
       
     - name: Print new value of env variable
       run: echo "IMAGE_NAME = $IMAGE_NAME"
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-docker-img:$IMAGE_NAME
+    #- name: Build the Docker image
+     # run: docker build . --file Dockerfile --tag my-docker-img:$IMAGE_NAME
       
     - name: List Docker Images
       run: docker images
