@@ -2,7 +2,7 @@ name: Sample Workflow
 
 on:
   push:
-    branches:sharon_trunk_codefix
+    branches: sharon_trunk_codefix
   
 env:
   IMAGE_NAME: ${{github.ref_name}}
