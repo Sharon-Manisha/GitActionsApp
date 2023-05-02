@@ -3,6 +3,9 @@ name: Sample Workflow
 on:
   push:
     branches: sharon_trunk_codefix
+  #pull_request:
+   # branches: sharon_trunk_codefix
+    #types: [closed]
   
 env:
   IMAGE_NAME: ${{github.ref_name}}
@@ -60,4 +63,10 @@ jobs:
         release_name: Release ${{ env.RELEASE_VERSION }}
         draft: false
         prerelease: true
+        
+    - name : Print Title of PR
+      run: echo The Title of your PR is ${{ github.event.pull_request.title }}
+      
+    - name : Print body of PR
+      run: echo The body of your PR is ${{ github.event.pull_request.body }}
   
