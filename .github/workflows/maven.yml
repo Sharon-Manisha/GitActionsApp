@@ -1,12 +1,8 @@
 name: Sample Workflow
 
 on:
-  #push:
-    #branches: sharon_trunk_codefix
-
-  pull_request:
-    branches: sharon_trunk_codefix
-    types: [closed]
+  push:
+    branches: sharon_trunk_cicd
   workflow_dispatch:
   
 env:
@@ -46,21 +42,16 @@ jobs:
       
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-docker-img:$RELEASE_VERSION
-      
-    - name: Create Release
-      if: github.ref_name == 'prod'
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-      with:
-        tag_name: ${{ env.RELEASE_VERSION }}
-        release_name: Release ${{ env.RELEASE_VERSION }}
-        body: |
-           Release Notes:
-           ${{ github.event.pull_request.body }} 
-        draft: false
-        prerelease: true
-      
+         
     - name: List Docker Images
       run: docker images
+      
+    - name: commit code
+      run: mvn versions:set -DnewVersion=4.0.0     
+          git config user.name Sharon-Manisha
+          git config user.email sharon@shiftx.ai
+          git add .
+          git commit -m "updated version in pom.xml"
+          git push
+
+      
