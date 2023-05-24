@@ -34,7 +34,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.0.0
+        mvn versions:set -DnewVersion=4.1.5
        
     - name: setup git config
       run: |
@@ -46,7 +46,7 @@ jobs:
     - name: commit code
       run: |
          # Stage the file, commit and push
-         git add .
+         git add pom.xml
          git commit -m "updated version in pom.xml"
          git push origin sharon_trunk_cicd
 
