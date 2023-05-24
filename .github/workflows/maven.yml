@@ -23,35 +23,31 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-          
-    - name: List Docker Images
-      run: docker images
-      
-    - name: Tag name dev if default branch
-      if: github.ref_name == 'main'
-      run: echo "IMAGE_NAME = $IMAGE_NAME"
-      env:
-        IMAGE_NAME: 'dev'
-        
+     
     - name: Set Release version env variable
       run: |
          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-      
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-docker-img:$RELEASE_VERSION
          
     - name: List Docker Images
       run: docker images
+ 
+    - name: update pom version
+      run: |
+        # do some operation that changes a file in the git repo
+        mvn versions:set -DnewVersion=4.0.0
+       
+    - name: setup git config
+      run: |
+        # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+        git config user.name "Sharon-Manisha"
+        git config user.email "<sharon@shiftx.ai>"
+           
       
     - name: commit code
-      run: mvn versions:set -DnewVersion=4.0.0     
-          git config user.name Sharon-Manisha
-          git config user.email sharon@shiftx.ai
-          git add .
-          git commit -m "updated version in pom.xml"
-          git push origin main
+      run: |
+         # Stage the file, commit and push
+         git add .
+         git commit -m "updated version in pom.xml"
+         git push origin sharon_trunk_cicd
 
       
