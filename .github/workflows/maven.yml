@@ -47,6 +47,6 @@ jobs:
          # Stage the file, commit and push
          git add pom.xml
          git commit -m "updated version in pom.xml"
-         git push origin main
+         git push -u origin main
 
       
