@@ -52,7 +52,7 @@ jobs:
          #git commit -m "updated version in pom.xml"
          #git push -u origin
          
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: pull-request-action
       uses: Sharon-Manisha/GitActionsApp/pull-request-action@main
       env:
