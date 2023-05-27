@@ -54,8 +54,8 @@ jobs:
    
     auto-pull-request:
     name: PullRequestAction
-    runs-on: ubuntu-latest
-    steps:
+  runs-on: ubuntu-latest
+  steps:
       - name: pull-request-action
         uses: Sharon-Manisha/pull-request-action@main
         env:
