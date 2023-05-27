@@ -51,18 +51,11 @@ jobs:
          #git add pom.xml
          #git commit -m "updated version in pom.xml"
          #git push -u origin
-   
-    auto-pull-request:
-    name: PullRequestAction
-  runs-on: ubuntu-latest
-  steps:
-      - name: pull-request-action
-        uses: Sharon-Manisha/pull-request-action@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-          PULL_REQUEST_BRANCH: "main"
-         
 
-         
-
+    - name: pull-request-action
+      uses: Sharon-Manisha/pull-request-action@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        PULL_REQUEST_BRANCH: "main"
+       
       
