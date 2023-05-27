@@ -53,7 +53,7 @@ jobs:
          #git push -u origin
 
     - name: pull-request-action
-      uses: Sharon-Manisha/pull-request-action@main
+      uses: Sharon-Manisha/GitActionsApp/pull-request-action@main
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         PULL_REQUEST_BRANCH: "main"
