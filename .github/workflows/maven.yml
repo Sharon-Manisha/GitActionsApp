@@ -17,7 +17,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.1.8
+        mvn versions:set -DnewVersion=0.0.1-SNAPSHOT
        
     - name: setup git config
       run: |
