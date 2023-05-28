@@ -51,7 +51,6 @@ jobs:
             automated pr
           assignees: Sharon-Manisha
           reviewers: Sharon-Manisha
-          milestone: 1
           draft: false
           branch: example-patches
           delete-branch: false  
