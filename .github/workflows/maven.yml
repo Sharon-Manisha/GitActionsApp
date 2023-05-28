@@ -32,7 +32,7 @@ jobs:
          git push -u origin
          
     - name: Run the Action
-      uses: Sharon-Manisha/GitActionsApp/action-pull-request@v3
+      uses: GitActionsApp/action-pull-request@v2
       with:
         github_token: ${{ secrets.GIT_TOKEN }}
         source_branch: sharon_trunk_cicd
