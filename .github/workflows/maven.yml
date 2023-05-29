@@ -53,7 +53,7 @@ jobs:
     - name: commit code
       run: |
          # Stage the file, commit and push         
-         git branch sharon_trunk_patch
+         git branch -d sharon_trunk_patch
          git add pom.xml
          git commit -m "updated version in pom.xml"
          git push -u origin
