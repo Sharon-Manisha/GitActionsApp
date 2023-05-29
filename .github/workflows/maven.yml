@@ -65,4 +65,4 @@ jobs:
     - name: create pull request
       run: gh pr create -B sharon_trunk_patch -H main --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'    
       env:
-        github_token: ${{ secrets.GIT_TOKEN }} 
+        GH_TOKEN: ${{ secrets.GIT_TOKEN }} 
