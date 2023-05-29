@@ -42,7 +42,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.1.11
+        mvn versions:set -DnewVersion=4.1.12
        
     - name: setup git config
       run: |
@@ -56,5 +56,5 @@ jobs:
          git branch sharon_trunk_patch
          git add pom.xml
          git commit -m "updated version in pom.xml"
-         git push -u origin sharon_trunk_patch
+         git push -u origin
              
