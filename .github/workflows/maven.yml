@@ -48,10 +48,13 @@ jobs:
       run: |
         # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
         git config user.name "Sharon-Manisha"
-        git config user.email "<sharon@shiftx.ai>"                
+        git config user.email "<sharon@shiftx.ai>"   
+                     
     - name: commit code
       run: |
-         # Stage the file, commit and push
+         # Stage the file, commit and push         
+         git branch sharon_trunk_patch
          git add pom.xml
          git commit -m "updated version in pom.xml"
-         git push -u origin
+         git push -u origin sharon_trunk_patch
+             
