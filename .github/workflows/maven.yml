@@ -42,19 +42,17 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.1.12
+        mvn versions:set -DnewVersion=4.1.13
        
     - name: setup git config
       run: |
         # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
         git config user.name "Sharon-Manisha"
         git config user.email "<sharon@shiftx.ai>"   
+        
+    - name: create branch  
+      run: |        
+         git branch -d sharon_trunk_patch  
+         git push -u origin :sharon_trunk_patch  
                      
-    - name: commit code
-      run: |
-         # Stage the file, commit and push         
-         git branch -d sharon_trunk_patch
-         git add pom.xml
-         git commit -m "updated version in pom.xml"
-         git push -u origin
-             
+            
