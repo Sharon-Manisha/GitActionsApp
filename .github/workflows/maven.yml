@@ -52,7 +52,7 @@ jobs:
         
     - name: create branch  
       run: |        
-         git checkout -b <sharon_trunk_patch>
+         git checkout -b sharon_trunk_patch
          git push -u origin :sharon_trunk_patch
           
                      
