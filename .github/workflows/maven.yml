@@ -9,6 +9,29 @@ env:
   IMAGE_NAME: ${{github.ref_name}}
 
 jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: update pom version
+      run: |
+        # do some operation that changes a file in the git repo
+        mvn versions:set -DnewVersion=4.1.21
+       
+    - name: setup git config
+      run: |
+        # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+        git config user.name "Sharon-Manisha"
+        git config user.email "<sharon@shiftx.ai>"                
+    - name: commit code
+      run: |
+         # Stage the file, commit and push
+         git add pom.xml
+         git commit -m "updated version in pom.xml"
+         git push -u origin
+
+
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +42,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.1.8
+        mvn versions:set -DnewVersion=4.1.11
        
     - name: setup git config
       run: |
