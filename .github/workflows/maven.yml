@@ -24,7 +24,7 @@ jobs:
     - name: Set Release version env variable
       run: |
          
-         echo REL_VERSION = $(echo ${REL_VERSION} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//)
+         echo "REL_VERSION = $(echo ${REL_VERSION} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//)" >> $GITHUB_ENV
          echo Hello 
          echo $REL_VERSION
 
