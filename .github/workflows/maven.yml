@@ -24,9 +24,9 @@ jobs:
     - name: Set Release version env variable
       run: |
          
-         REL_VERSION = $(echo ${REL_VERSION} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//)
+         VERSION = $(echo ${REL_VERSION} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//)
          echo Hello 
-         echo $REL_VERSION
+         echo $VERSION
 
     - name: update pom version
       run: |
