@@ -31,7 +31,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=$REL_VERSION
+        mvn versions:set -DnewVersion=$VERSION
              
     - name: setup git config
       run: |
