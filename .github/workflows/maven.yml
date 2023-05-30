@@ -17,7 +17,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.1.21
+        mvn versions:set -DnewVersion=4.1.22
        
     - name: setup git config
       run: |
@@ -29,7 +29,7 @@ jobs:
          # Stage the file, commit and push
          git add pom.xml
          git commit -m "updated version in pom.xml"
-         git push -u origin
+         git push origin
 
 
   createPullRequest:
