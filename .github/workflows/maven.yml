@@ -19,7 +19,7 @@ jobs:
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=4.1.16
+        mvn versions:set -DnewVersion=4.1.17
        
     - name: setup git config
       run: |
@@ -40,6 +40,6 @@ jobs:
          git push origin sharon_trunk_patch          
                      
     - name: create pull request
-      run: gh pr create --reviewer Sharon-Manisha -B main -H sharon_trunk_patch --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'  
+      run: gh pr create --reviewer VigneshIyappan -B main -H sharon_trunk_patch --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'  
       env:
         GH_TOKEN: ${{ secrets.GIT_TOKEN }} 
