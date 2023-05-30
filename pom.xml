@@ -6,7 +6,7 @@
 
   <groupId>com.gitactions</groupId>
   <artifactId>cicd-pipeline</artifactId>
-  <version>4.1.12</version>
+  <version>4.1.18</version>
 
   <name>cicd-pipeline</name>
   <!-- FIXME change it to the project's website -->
