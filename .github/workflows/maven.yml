@@ -18,6 +18,10 @@ jobs:
         
     - name: Set Release version env variable
       run: |
+         echo "REL_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+             
+    - name: Set Release version env variable
+      run: |
          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
          RELEASE_VERSION=$(echo $RELEASE_VERSION | awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
          echo $RELEASE_VERSION
