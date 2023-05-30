@@ -24,6 +24,7 @@ jobs:
       run: |
          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
          RELEASE_VERSION=$(echo $RELEASE_VERSION | awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
+         echo Hello 
          echo $RELEASE_VERSION
 
     - name: update pom version
