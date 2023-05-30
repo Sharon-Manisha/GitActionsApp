@@ -23,15 +23,15 @@ jobs:
 
     - name: Set Release version env variable
       run: |
-         echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-         echo $(echo $REL_VERSION | awk 'BEGIN{FS=OFS="."} {$3+=1} 1')
+         
+         REL_VERSION = echo $(echo ${REL_VERSION} |  awk -F'.' '{print $1"."$2"."$3+1}' |  sed s/[.]$//)
          echo Hello 
-         echo $RELEASE_VERSION
+         echo $REL_VERSION
 
     - name: update pom version
       run: |
         # do some operation that changes a file in the git repo
-        mvn versions:set -DnewVersion=$RELEASE_VERSION
+        mvn versions:set -DnewVersion=$REL_VERSION
              
     - name: setup git config
       run: |
